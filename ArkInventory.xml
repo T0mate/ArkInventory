@@ -255,6 +255,25 @@
 			
 			<Frame name="$parentArkBorder" inherits="ARKINV_Border" />
 			
+			<Frame name="$parentArkNew">
+
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset x="0" y="-2" />
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+						<Offset x="0" y="-12" />
+					</Anchor>
+				</Anchors>
+
+				<Layers>
+					<Layer level="BORDER">
+						<FontString name="$parentText" inherits="ARKINV_NewItemFont" justifyH="CENTER" hidden="true" />
+					</Layer>
+				</Layers>
+
+			</Frame>
+
 		</Frames>
 		
 		<Scripts>
@@ -1009,7 +1028,7 @@
 			
 			<Frame name="$parentContainer" inherits="ARKINV_TemplateFrameBasic">
 				
-				<Size x="400" y="400" />
+				<Size x="40" y="10" />
 				
 				<Anchors>
 					<Anchor point="TOPLEFT" />

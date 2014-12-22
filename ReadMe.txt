@@ -1,4 +1,8 @@
-﻿Description:
+﻿/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\
+/!\/!\		UNOFFICIAL VERSION      /!\/!\
+/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\
+
+Description:
 
 ArkInventory (AI or ARKINV) is an inventory mod that was based off EngInventory when the BtS 2.0.0 patch came out and I needed a working replacement.
 

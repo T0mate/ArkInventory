@@ -2473,7 +2473,9 @@ function ArkInventory.MenuLDBBagsOpen( frame )
 									"text", v.Name,
 									"closeWhenClicked", true,
 									"icon", v.Texture,
-									"func", v.Scripts.OnClick
+									"func", function( )
+										v.Scripts.OnClick( nil, nil )
+									end
 								)
 							end
 						end
