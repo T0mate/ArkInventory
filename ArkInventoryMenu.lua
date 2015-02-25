@@ -1052,8 +1052,12 @@ function ArkInventory.MenuItemOpen( frame )
 								end
 								
 							elseif ( class == "spell" ) then
-							
-								ArkInventory.Lib.Dewdrop:AddLine( "text", string.format( "%s: %s%s", ArkInventory.Localise["MENU_ITEM_DEBUG_TYPE"], LIGHTYELLOW_FONT_COLOR_CODE, string.lower( i.type ) ) )
+								
+								-- mounts
+								
+								local md = ArkInventory.MountJournal.GetMount( i.index )
+								
+								ArkInventory.Lib.Dewdrop:AddLine( "text", string.format( "%s: %s%s", ArkInventory.Localise["MENU_ITEM_DEBUG_TYPE"], LIGHTYELLOW_FONT_COLOR_CODE, md.mt or ArkInventory.Localise["UNKNOWN"] ) )
 								
 								ArkInventory.Lib.Dewdrop:AddLine( )
 								
@@ -1649,7 +1653,7 @@ function ArkInventory.MenuChangerVaultTabOpen( frame )
 				if level == 1 then
 				
 					ArkInventory.Lib.Dewdrop:AddLine(
-						"text", string.format( "%s: %s", ArkInventory.Localise["GUILDBANK"], string.format( GUILDBANK_TAB_NUMBER, bag_id ) ),
+						"text", string.format( "%s: %s", ArkInventory.Localise["LOCATION_VAULT"], string.format( GUILDBANK_TAB_NUMBER, bag_id ) ),
 						"isTitle", true,
 						"icon", bag.texture,
 						"textHeight", 12
@@ -1680,7 +1684,7 @@ function ArkInventory.MenuChangerVaultTabOpen( frame )
 					end
 					
 					ArkInventory.Lib.Dewdrop:AddLine(
-						"text", string.format( "mode: %s", ArkInventory.Localise["GUILDBANK"] ),
+						"text", string.format( "mode: %s", ArkInventory.Localise["LOCATION_VAULT"] ),
 						"closeWhenClicked", true,
 						"disabled", GuildBankFrame.mode == "bank",
 						"func", function( )
@@ -1797,7 +1801,7 @@ function ArkInventory.MenuChangerVaultActionOpen( frame )
 				if level == 1 then
 				
 					ArkInventory.Lib.Dewdrop:AddLine(
-						"text", ArkInventory.Localise["GUILDBANK"],
+						"text", ArkInventory.Localise["LOCATION_VAULT"],
 						"icon", ArkInventory.Global.Location[loc_id].Texture,
 						"isTitle", true,
 						"textHeight", 12
@@ -1932,7 +1936,7 @@ function ArkInventory.MenuChangerVaultActionOpen( frame )
 					ArkInventory.Lib.Dewdrop:AddLine( )
 					
 					ArkInventory.Lib.Dewdrop:AddLine(
-						"text", string.format( "%s: %s", DISPLAY, ArkInventory.Localise["GUILDBANK"] ),
+						"text", string.format( "%s: %s", DISPLAY, ArkInventory.Localise["LOCATION_VAULT"] ),
 						"closeWhenClicked", true,
 						"disabled", GuildBankFrame.mode == "bank",
 						"func", function( )
@@ -2348,7 +2352,7 @@ function ArkInventory.MenuSwitchCharacterOpen( frame )
 end
 
 function ArkInventory.MenuLDBBagsOpen( frame )
-
+	
 	assert( frame, "code error: frame argument is missing" )
 
 	if ArkInventory.Lib.Dewdrop:IsOpen( frame ) then
@@ -3453,7 +3457,7 @@ function ArkInventory.MenuItemPetJournal( frame, index )
 						-- rename
 						ArkInventory.Lib.Dewdrop:AddLine(
 							"text", BATTLE_PET_RENAME,
-							"disabled", not ArkInventory.PetJournal.JournalIsUnlocked( ),
+							"disabled", not ArkInventory.PetJournal.JournalIsReady( ),
 							"closeWhenClicked", true,
 							"func", function( info )
 								ArkInventory.Lib.StaticDialog:Spawn( "BATTLE_PET_RENAME", pd.guid )
@@ -3469,7 +3473,7 @@ function ArkInventory.MenuItemPetJournal( frame, index )
 						
 						ArkInventory.Lib.Dewdrop:AddLine(
 							"text", txt,
-							"disabled", not ArkInventory.PetJournal.JournalIsUnlocked( ),
+							"disabled", not ArkInventory.PetJournal.JournalIsReady( ),
 							"closeWhenClicked", true,
 							"func", function( info )
 								if pd.fav then
@@ -3608,7 +3612,7 @@ function ArkInventory.MenuItemMountJournal( frame, index )
 						
 						ArkInventory.Lib.Dewdrop:AddLine(
 							"text", txt,
-							"disabled", not ArkInventory.PetJournal.JournalIsUnlocked( ),
+							"disabled", not ArkInventory.PetJournal.JournalIsReady( ),
 							"closeWhenClicked", true,
 							"func", function( info )
 								if md.fav then
@@ -3679,7 +3683,7 @@ function ArkInventory.MenuRestackOpen( frame )
 					
 					ArkInventory.Lib.Dewdrop:AddLine(
 						"icon", ArkInventory.Const.Actions[22].Texture,
-						"text", ArkInventory.Localise["RESTACK"],
+						"text", ArkInventory.Const.Actions[22].Name,
 						"isTitle", true,
 						"textHeight", 14
 					)
@@ -3696,6 +3700,103 @@ function ArkInventory.MenuRestackOpen( frame )
 							DepositReagentBank( )
 						end
 					)
+					
+					ArkInventory.Lib.Dewdrop:AddLine( )
+					
+					ArkInventory.Lib.Dewdrop:AddLine(
+						"text", REVERSE_CLEAN_UP_BAGS_TEXT,
+						"tooltipTitle", REVERSE_CLEAN_UP_BAGS_TEXT,
+						"tooltipText", OPTION_TOOLTIP_REVERSE_CLEAN_UP_BAGS,
+						"checked", GetSortBagsRightToLeft( ),
+						"closeWhenClicked", true,
+						"func", function( )
+							SetSortBagsRightToLeft( not GetSortBagsRightToLeft( ) )
+						end
+					)
+					
+					ArkInventory.Lib.Dewdrop:AddLine( )
+					
+					ArkInventory.Lib.Dewdrop:AddLine(
+						"text", ArkInventory.Localise["CLOSE_MENU"],
+						"closeWhenClicked", true
+					)
+					
+				end
+				
+			end
+			
+		)
+	
+	end
+	
+end
+
+function ArkInventory.MenuRefreshOpen( frame )
+	
+	assert( frame, "code error: frame argument is missing" )
+
+	local loc_id = frame:GetParent( ):GetParent( ).ARK_Data.loc_id
+	local cp = ArkInventory.LocationPlayerInfoGet( loc_id )
+	
+	if ArkInventory.Lib.Dewdrop:IsOpen( frame ) then
+		
+		ArkInventory.Lib.Dewdrop:Close( )
+		
+	else
+		
+		local x, p, rp
+		x = frame:GetBottom( ) + ( frame:GetTop( ) - frame:GetBottom( ) ) / 2
+		if ( x >= ( GetScreenHeight( ) / 2 ) ) then
+			p = "TOPLEFT"
+			rp = "BOTTOMLEFT"
+		else
+			p = "BOTTOMLEFT"
+			rp = "TOPLEFT"
+		end
+	
+		ArkInventory.Lib.Dewdrop:Open( frame,
+			"point", p,
+			"relativePoint", rp,
+			"children", function( level, value )
+				
+				if level == 1 then
+					
+					ArkInventory.Lib.Dewdrop:AddLine(
+						"icon", ArkInventory.Const.Actions[24].Texture,
+						"text", ArkInventory.Const.Actions[24].Name,
+						"isTitle", true,
+						"textHeight", 14
+					)
+					
+					ArkInventory.Lib.Dewdrop:AddLine( )
+					
+					ArkInventory.Lib.Dewdrop:AddLine(
+						"text", string.format( "%s: %s", ArkInventory.Localise["CONFIG_SETTINGS_ITEMS_NEW"], ArkInventory.Localise["RESET"] ),
+						"tooltipTitle", ArkInventory.Localise["CONFIG_SETTINGS_ITEMS_NEW_RESET_TEXT"],
+						"closeWhenClicked", true,
+						"func", function( )
+							ArkInventory.Global.NewItemResetTime = ArkInventory.TimeAsMinutes( )
+							ArkInventory.Frame_Main_Generate( nil, ArkInventory.Const.Window.Draw.Recalculate )
+						end
+					)
+					
+					ArkInventory.Lib.Dewdrop:AddLine( )
+					
+					ArkInventory.Lib.Dewdrop:AddLine(
+						"text", string.format( "%s: %s", ArkInventory.Localise["ITEMS"], ArkInventory.Localise["CONFIG_SETTINGS_ITEMS_HIDDEN"] ),
+						"tooltipTitle", ArkInventory.Localise["CONFIG_SETTINGS_ITEMS_HIDDEN_TEXT"],
+						"closeWhenClicked", true,
+						"checked", ArkInventory.LocationOptionGet( loc_id, "slot", "ignorehidden" ),
+						"func", function( )
+							local v = ArkInventory.LocationOptionGet( loc_id, "slot", "ignorehidden" )
+							ArkInventory.LocationOptionSet( loc_id, "slot", "ignorehidden", not v )
+							ArkInventory.Frame_Main_Generate( nil, ArkInventory.Const.Window.Draw.Recalculate )
+						end
+					)
+					
+					
+					
+					
 					
 					ArkInventory.Lib.Dewdrop:AddLine( )
 					

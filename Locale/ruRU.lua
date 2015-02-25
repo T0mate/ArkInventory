@@ -82,11 +82,13 @@ if not L then return end
 	
 --	bag names - used to name the empty slots in the status frame
 	L["STATUS_NAME_BAG"] = "Сумка"
+--	L["STATUS_NAME_COOKING"] = ""
 --	L["STATUS_NAME_CRITTER"] = ""
 	L["STATUS_NAME_ENCHANTING"] = "Чары"
 	L["STATUS_NAME_ENGINEERING"] = "Инжен"
 --	L["STATUS_NAME_GEAR"] = ""
 	L["STATUS_NAME_GEM"] = "Ювел"
+--	L["STATUS_NAME_HEIRLOOM"] = ""
 	L["STATUS_NAME_HERB"] = "Трава"
 	L["STATUS_NAME_INSCRIPTION"] = "Начер"
 	L["STATUS_NAME_KEY"] = "Ключ"
@@ -94,9 +96,9 @@ if not L then return end
 	L["STATUS_NAME_MAIL"] = "Почта"
 	L["STATUS_NAME_MINING"] = "Руда"
 --	L["STATUS_NAME_MOUNT"] = ""
---	L["STATUS_NAME_TOKEN"] = ""
+--	L["STATUS_NAME_REAGENTBANK"] = ""
 --	L["STATUS_NAME_TACKLE"] = ""
---	L["STATUS_NAME_COOKING"] = ""
+--	L["STATUS_NAME_TOKEN"] = ""
 --	L["STATUS_NAME_TOY"] = ""
 	
 	
@@ -168,6 +170,7 @@ if not L then return end
 	L["MENU_BAR_CATEGORY_HIDDEN_TEXT"] = "клик для назначения данной категории статуса скрытой.\n\nпредметы в скрытых категориях не будут видны в обычном режиме."
 --	L["MENU_BAR_CATEGORY_MOVE_START_TEXT"] = ""
 --	L["MENU_BAR_CATEGORY_MOVE_COMPLETE_TEXT"] = ""
+--	L["MENU_BAR_BAG_ASSIGN_TEXT"] = ""
 	L["MENU_BAR_OPTIONS"] = "Настройки полос"
 	L["MENU_BAR_CLEAR_TEXT"] = "убирает все категории, закрепленные за этим набором, за исключением категории по умолчанию."
 	L["MENU_BAR_INSERT_TEXT"] = "добавить пустой набор ячеек сюда, сдвигая все категории на один набор вверх."
@@ -205,6 +208,8 @@ if not L then return end
 --	L["CONFIG_SYSTEM_FRAMESTRATA_LEVEL_LOW"] = ""
 --	L["CONFIG_SYSTEM_FRAMESTRATA_LEVEL_MEDIUM"] = ""
 --	L["CONFIG_SYSTEM_FRAMESTRATA_LEVEL_HIGH"] = ""
+	
+--	L["CONFIG_SYSTEM_RESTACK_TEXT"] = ""
 	
 	L["CONFIG_SYSTEM_TOOLTIP"] = "Тултипы"
 	L["CONFIG_SYSTEM_TOOLTIP_ENABLE_TEXT"] = "включить тултипы"
@@ -366,6 +371,15 @@ if not L then return end
 --	L["CONFIG_SETTINGS_ITEMS_TINT_USABLE_TEXT"] = ""
 --	L["CONFIG_SETTINGS_ITEMS_ITEMLEVEL_SHOW"] = ""
 --	L["CONFIG_SETTINGS_ITEMS_ITEMLEVEL_SHOW_TEXT"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_COMPRESS"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_COMPRESS_TEXT"] = ""
+	
+--	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_SHOW_TEXT"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_GLOBAL"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_GLOBAL_TEXT"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_COMBAT"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_COMBAT_TEXT"] = ""
+	
 	L["CONFIG_SETTINGS_ITEMS_BORDER_SHOW_TEXT"] = "отображать ли кромку вокруг каждой ячейки"
 --	L["CONFIG_SETTINGS_ITEMS_BORDER_STYLE_TEXT"] = ""
 	L["CONFIG_SETTINGS_ITEMS_BORDER_RARITY"] = "Кромка в цвет качества"
@@ -373,17 +387,16 @@ if not L then return end
 --	L["CONFIG_SETTINGS_ITEMS_BORDER_RARITY_CUTOFF"] = ""
 --	L["CONFIG_SETTINGS_ITEMS_BORDER_RARITY_CUTOFF_TEXT"] = ""
 	L["CONFIG_SETTINGS_ITEMS_BORDER_TEXTURE_OFFSET_TEXT"] = "расстояние в пикселях между краем картинки предмета и внутренней стороной кромки ячейки"
+	
+--	L["CONFIG_SETTINGS_ITEMS_NEW"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_NEW_ENABLED_TEXT"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_NEW_CUTOFF_TEXT"] = ""
+--	L["CONFIG_SETTINGS_ITEMS_NEW_RESET_TEXT"] = ""
+	
 	L["CONFIG_SETTINGS_ITEMS_AGE"] = "Новые предметы"
 	L["CONFIG_SETTINGS_ITEMS_AGE_SHOW_TEXT"] = "отображать индикатор нового предмета в окне %s"
 	L["CONFIG_SETTINGS_ITEMS_AGE_COLOUR_TEXT"] = "задает цвет текста для индикатора нового предмета."
---	L["CONFIG_SETTINGS_ITEMS_AGE_CUTOFF"] = ""
 --	L["CONFIG_SETTINGS_ITEMS_AGE_CUTOFF_TEXT"] = ""
-	L["CONFIG_SETTINGS_ITEMS_AGE_RESET_TEXT"] = "сбросить метки нового предмета в этом окне"
---	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_SHOW_TEXT"] = ""
---	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_GLOBAL"] = ""
---	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_GLOBAL_TEXT"] = ""
---	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_COMBAT"] = ""
---	L["CONFIG_SETTINGS_ITEMS_COOLDOWN_COMBAT_TEXT"] = ""
 	
 	L["CONFIG_SETTINGS_SORTING_OPEN"] = "При открытии окна"
 	L["CONFIG_SETTINGS_SORTING_OPEN_TEXT"] = "производить ли сортировку при открытии окна"
@@ -402,6 +415,8 @@ if not L then return end
 --	L["CONFIG_SETTINGS_EMPTY_STATUS"] = "display format"
 --	L["CONFIG_SETTINGS_EMPTY_FIRST"] = ""
 --	L["CONFIG_SETTINGS_EMPTY_FIRST_TEXT"] = ""
+--	L["CONFIG_SETTINGS_EMPTY_POSITION"] = ""
+--	L["CONFIG_SETTINGS_EMPTY_POSITION_TEXT"] = ""
 	
 	
 -- sorting
@@ -409,6 +424,8 @@ if not L then return end
 	
 	L["CONFIG_SORTING_SORT"] = "Сортировка"
 	
+--	L["CONFIG_SORTING_METHOD"] = ""
+--	L["CONFIG_SORTING_METHODS"] = ""
 --	L["CONFIG_SORTING_METHOD_TEXT"] = ""
 	L["CONFIG_SORTING_METHOD_BAGSLOT"] = "Сумка / Ячейка"
 	L["CONFIG_SORTING_METHOD_BAGSLOT_TEXT"] = "сортирует инвентарь по номеру сумки и ячейки"
@@ -416,6 +433,7 @@ if not L then return end
 	L["CONFIG_SORTING_METHOD_USER_TEXT"] = "сортирует инвентарь тем способом, который выберите Вы"
 	
 --	L["CONFIG_SORTING_BAG"] = ""
+--	L["CONFIG_SORTING_BAGS"] = ""
 --	L["CONFIG_SORTING_BAG_TEXT"] = ""
 	
 	L["CONFIG_SORTING_INCLUDE_NAME"] = "название предмета"
@@ -544,8 +562,6 @@ if not L then return end
 	
 --	L["BATTLEPET_OPPONENT_IMMUNE"] = ""
 --	L["BATTLEPET_OPPONENT_KNOWN_MAX"] = ""
---	L["BATTLEPET_OPPONENT_KNOWN"] = ""
---	L["BATTLEPET_OPPONENT_UNKNOWN"] = ""
 --	L["BATTLEPET_OPPONENT_UPGRADE"] = ""
 --	L["BATTLEPET_OPPONENT_FORMAT_STRONG"] = ""
 --	L["BATTLEPET_OPPONENT_FORMAT_WEAK"] = ""
@@ -623,6 +639,7 @@ if not L then return end
 --	L["NO_DATA_AVAILABLE"] = ""
 --	L["TOOLTIP_PURCHASE_BANK_BAG_SLOT"] = ""
 --	L["TOOLTIP_PURCHASE_BANK_TAB_REAGENT"] = ""
+--	L["LABEL"] = ""
 	
 	
 -- libdatabroker

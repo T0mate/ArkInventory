@@ -1,9 +1,13 @@
-﻿## Interface: 40300
+﻿## Interface: 60000
+## X-Curse-Packaged-Version: 3.05.00
+## X-Curse-Project-Name: ArkInventory
+## X-Curse-Project-ID: ark-inventory
+## X-Curse-Repository-ID: wow/ark-inventory/mainline
 
 ## Title: ArkDewdrop [3.0]
 ## Author: Arkayenro
 ## Email: arkayenro at gmail dot com
-## Version: 3.00
+## Version: 30001
 ## DefaultState: Disabled
 ## LoadOnDemand: 0
 
